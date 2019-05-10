@@ -50,7 +50,8 @@ namespace WebAppEF.DataAccess.DataAccess
         {
             using (SchoolContext db = new SchoolContext())
             {
-                db.Students.Remove(db.Students.Find(id));
+                Student studentToDelete = new Student() { ID = id };
+                db.Entry(studentToDelete).State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }
