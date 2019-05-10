@@ -45,12 +45,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -193,9 +187,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebAppEF.DataAccess\WebAppEF.DataAccess.csproj">
-      <Project>{daf46226-aeea-4c36-9e17-3ce6e8d70a59}</Project>
-      <Name>WebAppEF.DataAccess</Name>
+    <ProjectReference Include="..\WebAppEF.Core\WebAppEF.Core.csproj">
+      <Project>{807a4ee7-bdad-4a6a-a95c-b458dd077f29}</Project>
+      <Name>WebAppEF.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebAppEF.Model\WebAppEF.Model.csproj">
       <Project>{43c8bca6-0fd0-46dd-9486-fd108425c363}</Project>

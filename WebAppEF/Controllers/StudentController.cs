@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using WebAppEF.DataAccess.DB_Context;
+using WebAppEF.Core.Core;
+using WebAppEF.Core.InterfaceCore;
 using WebAppEF.Model.Entity;
 
 namespace WebAppEF.Controllers
 {
     public class StudentController : Controller
     {
-        private SchoolContext db = new SchoolContext();
+        private readonly IStudentService _studentService;
+
+        public StudentController()
+        {
+            _studentService = new StudentService();
+        }
 
         // GET: Student
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            List<Student> studentList = _studentService.GetAllStudents();
+            return View(studentList);
         }
 
         // GET: Student/Details/5
@@ -28,7 +30,7 @@ namespace WebAppEF.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = _studentService.GetStudentDetail(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -51,8 +53,7 @@ namespace WebAppEF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
-                db.SaveChanges();
+                _studentService.UpdateStudent(student);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +67,7 @@ namespace WebAppEF.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = _studentService.GetStudentDetail(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -83,8 +84,7 @@ namespace WebAppEF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
+                _studentService.UpdateStudent(student);
                 return RedirectToAction("Index");
             }
             return View(student);
@@ -97,7 +97,7 @@ namespace WebAppEF.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = _studentService.GetStudentDetail(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -110,19 +110,8 @@ namespace WebAppEF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
-            db.SaveChanges();
+            _studentService.DeleteStudent(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
