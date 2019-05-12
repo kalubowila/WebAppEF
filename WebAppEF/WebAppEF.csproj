@@ -204,6 +204,10 @@
       <Project>{807a4ee7-bdad-4a6a-a95c-b458dd077f29}</Project>
       <Name>WebAppEF.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebAppEF.Logging\WebAppEF.Logging.csproj">
+      <Project>{2521b92b-cc86-41f5-aac7-326d99fbc9f3}</Project>
+      <Name>WebAppEF.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebAppEF.Model\WebAppEF.Model.csproj">
       <Project>{43c8bca6-0fd0-46dd-9486-fd108425c363}</Project>
       <Name>WebAppEF.Model</Name>

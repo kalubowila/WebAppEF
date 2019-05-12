@@ -7,6 +7,7 @@ using WebAppEF.Core.Core;
 using WebAppEF.Core.InterfaceCore;
 using WebAppEF.Model.Entity;
 using PagedList;
+using System.Data.Entity.Infrastructure;
 
 namespace WebAppEF.Controllers
 {
@@ -39,7 +40,7 @@ namespace WebAppEF.Controllers
 
             List<Student> studentList = _studentService.GetAllStudents(sortOrder, searchString);
 
-            int pageSize = 3;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
            
             return View(studentList.ToPagedList(pageNumber, pageSize));
@@ -81,7 +82,7 @@ namespace WebAppEF.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException dex)
+            catch (RetryLimitExceededException dex)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
@@ -149,7 +150,7 @@ namespace WebAppEF.Controllers
             {
                 _studentService.DeleteStudent(id);
             }
-            catch (DataException dex)
+            catch (RetryLimitExceededException dex)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
