@@ -48,9 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\GenericDataAccess.cs" />
     <Compile Include="DataAccess\StudentDataAccess.cs" />
     <Compile Include="DB_Context\SchoolContext.cs" />
     <Compile Include="DB_Initialize\SchoolInitializer.cs" />
+    <Compile Include="InterfaceDataAccess\IGenericDataAccess.cs" />
     <Compile Include="InterfaceDataAccess\IStudentDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

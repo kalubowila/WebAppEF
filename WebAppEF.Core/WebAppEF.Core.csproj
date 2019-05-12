@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\GenericService.cs" />
     <Compile Include="Core\StudentService.cs" />
+    <Compile Include="InterfaceCore\IGenericService.cs" />
     <Compile Include="InterfaceCore\IStudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
