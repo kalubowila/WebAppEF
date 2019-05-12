@@ -19,9 +19,9 @@ namespace WebAppEF.Core.Core
         }
 
 
-        public List<Student> GetAllStudents()
+        public List<Student> GetAllStudents(string sortOrder, string searchString)
         {
-            return _studentDataAccess.GetAllStudents();
+            return _studentDataAccess.GetAllStudents(sortOrder, searchString);
         }
 
         public Student GetStudentDetail(int? id)

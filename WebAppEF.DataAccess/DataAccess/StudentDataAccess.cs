@@ -12,11 +12,35 @@ namespace WebAppEF.DataAccess.DataAccess
 {
     public class StudentDataAccess : IStudentDataAccess
     {
-        public List<Student> GetAllStudents()
+        public List<Student> GetAllStudents(string sortOrder, string searchString)
         {
             using (SchoolContext db = new SchoolContext())
             {
-                return db.Students.ToList();
+                var students = from s in db.Students
+                               select s;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    students = students.Where(o => o.FirstMidName.Contains(searchString) || o.LastName.Contains(searchString));
+                }
+
+                switch (sortOrder)
+                {
+                    case "name_desc":
+                        students = students.OrderByDescending(o => o.LastName);
+                        break;
+                    case "Date":
+                        students = students.OrderBy(o => o.EnrollmentDate);
+                        break;
+                    case "date_desc":
+                        students = students.OrderByDescending(o => o.EnrollmentDate);
+                        break;
+                    default:
+                        students = students.OrderBy(o => o.LastName);
+                        break;
+                }
+
+                return students.ToList();
             }
         }
 

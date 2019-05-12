@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Net;
 using System.Web.Mvc;
 using WebAppEF.Core.Core;
 using WebAppEF.Core.InterfaceCore;
 using WebAppEF.Model.Entity;
+using PagedList;
 
 namespace WebAppEF.Controllers
 {
@@ -18,10 +20,29 @@ namespace WebAppEF.Controllers
         }
 
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            List<Student> studentList = _studentService.GetAllStudents();
-            return View(studentList);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            List<Student> studentList = _studentService.GetAllStudents(sortOrder, searchString);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+           
+            return View(studentList.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Student/Details/5

@@ -9,7 +9,7 @@ namespace WebAppEF.DataAccess.InterfaceDataAccess
 {
     public interface IStudentDataAccess
     {
-        List<Student> GetAllStudents();
+        List<Student> GetAllStudents(string sortOrder, string searchString);
         Student GetStudentDetail(int? id);
         void CreateStudent(Student student);
         void UpdateStudent(Student student);

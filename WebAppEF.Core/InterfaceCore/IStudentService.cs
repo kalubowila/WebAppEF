@@ -9,7 +9,7 @@ namespace WebAppEF.Core.InterfaceCore
 {
     public interface IStudentService
     {
-        List<Student> GetAllStudents();
+        List<Student> GetAllStudents(string sortOrder, string searchString);
         Student GetStudentDetail(int? id);
         void UpdateStudent(Student student);
         void DeleteStudent(int id);
