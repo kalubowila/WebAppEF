@@ -137,6 +137,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905131356289_InitialCreate.cs" />
+    <Compile Include="Migrations\201905131356289_InitialCreate.Designer.cs">
+      <DependentUpon>201905131356289_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +156,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\TestUniversityEF - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -204,6 +210,10 @@
       <Project>{807a4ee7-bdad-4a6a-a95c-b458dd077f29}</Project>
       <Name>WebAppEF.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebAppEF.DataAccess\WebAppEF.DataAccess.csproj">
+      <Project>{daf46226-aeea-4c36-9e17-3ce6e8d70a59}</Project>
+      <Name>WebAppEF.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebAppEF.Logging\WebAppEF.Logging.csproj">
       <Project>{2521b92b-cc86-41f5-aac7-326d99fbc9f3}</Project>
       <Name>WebAppEF.Logging</Name>
@@ -212,6 +222,11 @@
       <Project>{43c8bca6-0fd0-46dd-9486-fd108425c363}</Project>
       <Name>WebAppEF.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905131356289_InitialCreate.resx">
+      <DependentUpon>201905131356289_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

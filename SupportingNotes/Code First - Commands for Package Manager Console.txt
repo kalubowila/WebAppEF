@@ -1,0 +1,7 @@
+--Enable Migration and Create Configuration.cs--
+enable-migrations -ContextProjectName WebAppEF.DataAccess -StartUpProjectName WebAppEF.DataAccess -ContextTypeName WebAppEF.DataAccess.DB_Context.SchoolContext -ProjectName WebAppEF
+
+
+add-migration InitialCreate
+
+update-database
