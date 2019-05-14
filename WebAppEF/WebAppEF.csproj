@@ -141,6 +141,18 @@
     <Compile Include="Migrations\201905131356289_InitialCreate.Designer.cs">
       <DependentUpon>201905131356289_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905140634233_MaxLengthOnNames.cs" />
+    <Compile Include="Migrations\201905140634233_MaxLengthOnNames.Designer.cs">
+      <DependentUpon>201905140634233_MaxLengthOnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905140648477_ColumnFirstName.cs" />
+    <Compile Include="Migrations\201905140648477_ColumnFirstName.Designer.cs">
+      <DependentUpon>201905140648477_ColumnFirstName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905140804148_ComplexDataModel.cs" />
+    <Compile Include="Migrations\201905140804148_ComplexDataModel.Designer.cs">
+      <DependentUpon>201905140804148_ComplexDataModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -226,6 +238,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905131356289_InitialCreate.resx">
       <DependentUpon>201905131356289_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905140634233_MaxLengthOnNames.resx">
+      <DependentUpon>201905140634233_MaxLengthOnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905140648477_ColumnFirstName.resx">
+      <DependentUpon>201905140648477_ColumnFirstName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905140804148_ComplexDataModel.resx">
+      <DependentUpon>201905140804148_ComplexDataModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,6 @@
-﻿namespace WebAppEF.Model.Entity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebAppEF.Model.Entity
 {
     public enum Grade
     {
@@ -10,6 +12,8 @@
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }
         public int StudentID { get; set; }
+
+        [DisplayFormat(NullDisplayText = "No grade")]
         public Grade? Grade { get; set; }
 
         public virtual Course Course { get; set; }
